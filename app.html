@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head id="head">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/index.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.0.1/mammoth.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.4.456/pdf.min.js"></script>
+  <script defer src="../scripts/index.js"></script>
+  <title>Application</title>
+</head>
+<body id="body" class="bg-[#120C8A] text-yellow-200">
+  <div class="mx-auto fixe w-full left-0 right-0 max-w-[1500px] min-h-screen justify-between grid grid-cols-[max-content_1fr_max-content] max-lg:grid-cols-1 gap-5 pt-9 px-[clamp(5px,3vw,90px)] items-start max-md:flex-wrap">
+
+    <!-- Left Section -->
+    <div class="flex gap-2 mt-3.5 items-start">
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/7799fab8343e27e6ada566cd970a2cf85688b822a0537303188874872e9adce5?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+        class="aspect-square object-contain object-center w-[30px] overflow-hidden shrink-0 max-w-full"
+      />
+      <div class="text-3xl font-bold tracking-tight self-stretch grow whitespace-nowrap">
+        reeder
+      </div>
+    </div>
+
+    <!-- Middle Sectino -->
+    <div class="self-stretch max-lg:order-3 max-md:max-w-full w-full  max-w-[9500px] mx-auto">
+      <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
+        <div class="flex flex-col items-stretch w-full max-md:w-full max-md:ml-0">
+          <div class="flex grow flex-col items-start max-md:max-w-full">
+            <div id="pageNamecontainer" class="justify-center items-stretch border border-[color:var(--Secondary,#FFF3AB)] flex gap-2.5 px-3.5 py-3 border-solid">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/37be50b908851f65389a4c1ffcdb9df0febee81dd19c959ba5f706f95f5cfd80?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+                class="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
+              />
+              <div class=" text-base font-bold tracking-tight self-center grow whitespace-nowrap my-auto">
+                Augmented_reality_navigation_systems.pdf
+              </div>
+              <!-- <input type="file" id="fileInput" accept=".pdf, .doc, .docx"> -->
+              <!-- <button onclick="uploadFile()">Upload</button> -->
+            </div>
+            <div id="pageWrapper" class="bg-yellow-200 max-h-screen overflow-y-auto min-h-[calc(100vh-100px)] min-w-max self-stretch flex flex-col items-start max-md:max-w-full">
+              <div class="" id="fileViewer"></div>
+              <div id="pdfViewer" class=""></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <section id="settingsContainer" class="ab z-[3] relative order-2 flex flex-col items-stretch  max-md:w-full max-md:ml-0">
+      <div class="items-stretch flex-wrap shadow-sm  flex w-full flex-col justify-center mx-auto p-2.5">
+        <div class="items-stretch flex gap-1 max-md:justify-center">
+          <button id="text-to-speech" onclick="readText()">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/27de93da10cea8335f0df1f031c903a6f86a060e877b809fb44a1df7242d02e6?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+            class="aspect-square object-contain object-center w-[39px] stroke-[1.633px] stroke-yellow-100 overflow-hidden shrink-0 max-w-full"
+          />
+        </button>
+        
+          <button id="text-to-speech" onclick="readText()">Text to Speech</button>
+
+          <script>
+              function readText() {
+                  var visibleTabContent = document.querySelector('.tab-content:not([style*="display:none"])');
+                  var textToRead = visibleTabContent.querySelector('p').textContent;
+                  
+                  var utterance = new SpeechSynthesisUtterance(textToRead);
+                  window.speechSynthesis.speak(utterance);
+              }
+          </script>
+          <button id="toggleButtom" onclick="toggleZoom()" class="">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/472fcf8f0bf1041a1db973f2c02b361c123e9d13ac7c7543acfc0cffda76b245?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+              class="aspect-square object-contain object-center w-[39px] stroke-[1.633px] stroke-yellow-100 overflow-hidden shrink-0 max-w-full"
+            />
+          </button>
+          <button id="settingsButton" onclick="toggleSettings()" class="">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/a976c209fd6c56e28e1e6a27c1e99fb2f64fde429e21961445f777fba18e3a09?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+              class="aspect-[1.03] object-contain object-center w-10 stroke-[1.633px] stroke-yellow-100 overflow-hidden shrink-0 max-w-full"
+            />
+          </button>
+          
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/66a217ac1faecf396ee5b5bff0026e43683edc7cc2e9f18d956ddfbdfc896d42?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+            class="aspect-square object-contain object-center w-[39px] stroke-[1.633px] stroke-yellow-100 overflow-hidden shrink-0 max-w-full"
+          />
+          <br>
+
+        </div>
+        <label for="fileInput" class="mt-1 w-full bg-yellow-200 text-violet-800">
+          <div class="  w-full px-6 text-xl text-center font-semibold py-1.5">Select File</div>
+          <input type="file" class="hidden" id="fileInput" accept=".pdf, .doc, .docx">
+        </label>
+        <button class="bg-yellow-200 mt-1 text-violet-800 px-6 text-xl font-semibold py-1.5" onclick="uploadFile()">Upload</button>
+      </div>
+
+      <!-- Settings Modal -->
+      <div  id="settingsModal" class="absolute hidden right-0 top-40 bg-violet-950 px-20 py-10 max-md:px-5">
+        <div class="gap-5  flex max-md:flex-col max-md:items-stretch max-md:gap-0">
+          <div class="flex flex-col items-stretch w-[32%] max-md:w-full max-md:ml-0">
+            <div class="flex grow flex-col mt-2.5 items-end max-md:mt-10">
+              <div class="flex w-[218px] max-w-full flex-col items-stretch">
+                <label for="" class="selector">
+                  <p class="text-cyan-400 text-base tracking-tight self-start">Font</p>
+                  <select name="" onchange="changeFont(this)" id="" class="text-yellow-100 outline-none bg-transparent appearance-none text-2xl font-bold tracking-tight">
+                    <option value="" class="text-yellow-100 text-2xl font-bold tracking-tight">Inter</option>
+                    <option value="Inter" class="text-yellow-100 text-2xl font-bold tracking-tight">Inter</option>
+                    <option value="Times" class="text-yellow-100 text-2xl font-bold tracking-tight">Times</option>
+                    <option value="Tahoma" class="text-yellow-100 text-2xl font-bold tracking-tight">Tahoma</option>
+                  </select>
+                </label>
+                
+                <label for="" class="mt-7 selector">
+                  <p class="text-cyan-400 text-base tracking-tight self-start">Font Size</p>
+                  <select name="" onchange="changeFontSize(this)" id="" class="text-yellow-100 outline-none bg-transparent appearance-none text-2xl font-bold tracking-tight">
+                    <option value="1.3" class="text-yellow-100 text-2xl font-bold tracking-tight">x1</option>
+                    <option value="1.35" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.1</option>
+                    <option value="1.4" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.2</option>
+                    <option value="1.45" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.3</option>
+                    <option value="1.5" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.4</option>
+                    <option value="1.5" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.5</option>
+                  </select>
+                </label>
+               
+              </div>
+              <!-- <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/f072da9b1523fb8d6cd9dbf144e15dcb2d5e508b844d19fdcd6e2396f9f83bd3?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+                class="aspect-square object-contain object-center w-14 stroke-[1px] stroke-yellow-100 overflow-hidden max-w-full mt-24 self-start max-md:mt-10"
+              /> -->
+            </div>
+          </div>
+          <div class="flex flex-col items-stretch w-[44%] ml-5 max-md:w-full max-md:ml-0">
+            <div class="mt-2.5 max-md:max-w-full max-md:mt-10">
+              <div class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
+                <div class="flex flex-col items-stretch w-[34%] max-md:w-full max-md:ml-0">
+                  <div class="flex flex-col items-stretch max-md:mt-10">
+                    <p class="text-cyan-400 text-base tracking-tight whitespace-nowrap">
+                      Line Spacing
+                    </p>
+                    <select name="" onchange="changeFontSize(this)" id="" class="text-yellow-100 outline-none bg-transparent appearance-none text-2xl font-bold tracking-tight">
+                      <option value="1.3" class="text-yellow-100 text-2xl font-bold tracking-tight">1</option>
+                      <option value="1.35" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.1</option>
+                      <option value="1.4" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.2</option>
+                      <option value="1.45" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.3</option>
+                      <option value="1.5" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.4</option>
+                      <option value="1.5" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.5</option>
+                    </select>
+                    <p class="text-cyan-400 text-base tracking-tight whitespace-nowrap mt-7">
+                      Magnifier Size
+                    </p>
+                    <select name="" onchange="changeFontSize(this)" id="" class="text-yellow-100 outline-none bg-transparent appearance-none text-2xl font-bold tracking-tight">
+                      <option value="1.3" class="text-yellow-100 text-2xl font-bold tracking-tight">20%</option>
+                      <option value="1.35" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.1</option>
+                      <option value="1.4" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.2</option>
+                      <option value="1.45" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.3</option>
+                      <option value="1.5" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.4</option>
+                      <option value="1.5" class="text-yellow-100 text-2xl font-bold tracking-tight">x 1.5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="flex flex-col items-stretch w-[66%] ml-5 max-md:w-full max-md:ml-0">
+                  <div class="flex grow flex-col items-start max-md:mt-10">
+                    <!-- <div class="text-cyan-400 text-base tracking-tight whitespace-nowrap">
+                      Text-to-Speech Volume
+                    </div> -->
+                    <p class="text-cyan-400 text-base tracking-tight self-stretch max-md:mt-10">
+                      Color Scheme
+                    </p>
+                    <div class="items-stretch self-stretch flex justify-between gap-5 mt-6 pr-12 max-md:pr-5" >
+                      <button onclick="setColor('#000','rgb(251 207 232)','#02FFFF')" class="color-changer bg-pink-200 flex aspect-square flex-col justify-center items-center w-10 h-10 pr-6 border-2 border-solid border-white max-md:pr-5">
+                        <div class="bg-black flex shrink-0 h-10 flex-col border-2 border-solid border-white"></div>
+                      </button>
+                      <button onclick="setColor('#083933','#FF8073','#02FFFF')" class="color-changer bg-red-400 flex aspect-square flex-col justify-center items-center w-10 h-10 pr-6 border-2 border-solid border-white max-md:pr-5">
+                        <div class="bg-teal-950 flex shrink-0 h-10 flex-col border-2 border-solid border-white"></div>
+                      </button>
+                      <button onclick="setColor('#120C8A','#FFF3AB')" class="color-changer bg-blue-400 flex aspect-square flex-col justify-center items-center w-10 h-10 pr-6 border-2 border-solid border-white max-md:pr-5">
+                        <div  class="bg-violet-950 flex shrink-0 h-10 flex-col border-2 border-solid border-white"></div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-stretch w-[24%] ml-5 max-md:w-full max-md:ml-0"
+          >
+            <div class="items-stretch flex flex-col gap-2 max-md:mt-10">
+
+                <button class="items-stretch flex justify-between gap-2.5 border border-[color:var(--Secondary,#FFF3AB)] px-10 py-4">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/ebcf816728bf47d454ee3776bb8e699fa869ff90b9c37efe534742b7c1845531?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+                    class="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
+                  />
+                  <span class=" text-base font-bold leading-6 grow whitespace-nowrap self-start" href="https://scholar.google.com/">
+                    Go to Library
+                  </span>
+                </button>
+
+                <button class="tems-stretch flex justify-between gap-2.5 border border-[color:var(--Secondary,#FFF3AB)] px-10 py-4">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a0a4a94b52e5d4caed8fa0e59a241676ed7d0f03255270038eb18dfed54c9d2?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+                    class="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div class=" text-base font-bold leading-6 grow whitespace-nowrap self-start">
+                    New Document
+                  </div>
+                </button>
+
+                <button class="items-stretch flex justify-between gap-2.5 border border-[color:var(--Secondary,#FFF3AB)] px-10 py-4">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/1cb680ddb9a61ea419a0b49bf53632b4501fdaa49897727232e0b26bf5f932cd?apiKey=0ce679486ae447bd8ce08b2cc2263e2e&"
+                    class="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
+                  />
+                  <div
+                    class=" text-base font-bold leading-6 grow whitespace-nowrap self-start"
+                  >
+                    Sign Out
+                  </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <div id="chatbot-container">
+      <div id="chatbot-header">Emotion Recognition Chatbot</div>
+      <div id="chatbot-body"></div>
+      <div id="chatbot-input-container">
+          <input type="text" id="chatbot-input" placeholder="How are you feeling today?" />
+          <button id="chatbot-send-btn">Submit</button>
+      </div>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
